@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 
 
 app = Flask(__name__)
@@ -9,7 +9,7 @@ projects = [
         "thumb": "img/random_runner.png",
         "hero": "img/random_runner-hero.png",
         "categories" : ["C#", "Unity"],
-        "slug": "A luck-based race game",
+        "slug": "random_runner",
         "prod": "https://sharemygame.com/@HyunsangCoder/randomrunner"
     },
     {
@@ -17,7 +17,7 @@ projects = [
         "thumb": "img/slack_bot.png",
         "hero": "img/slack_bot-hero.png",
         "categories" : ["Python", "Slack/Bolt API"],
-        "slug": "A custom Slack bot to export data",
+        "slug": "slack_bot",
         "prod": "https://slack.dev/bolt-python/concepts"
     },
     {   
@@ -25,10 +25,12 @@ projects = [
         "thumb": "img/simple_shooter.png",
         "hero": "img/simple_shooter-hero.png",
         "categories" : ["C++", "Unreal Engine"],
-        "slug": "A simple TPP shooter game",
+        "slug": "simple_shooter",
         "prod": "https://www.unrealengine.com"
     },
 ]
+
+slug_to_project = {project["slug"]:project for project in projects}
 
 @app.route("/")
 def home():
@@ -41,3 +43,11 @@ def about():
 @app.route("/contact")
 def contact():
     return render_template("contact.html", projects=projects)
+
+@app.route("/project/<string:slug>")
+def project(slug):
+    if slug not in slug_to_project:
+        abort(404)
+    return render_template(
+        f"project_{slug}.html",
+        project=slug_to_project[slug])
