@@ -1,50 +1,50 @@
 {%extends 'base.html'%}
 
 {%block content%}
-<main class="main main--project">
-    <div>
-        <img 
-            class = "hero"
-            src ="{{ url_for('static', filename=project['hero']) }}"
-            alt = "Missing image..."
-        />
+    <main class="main main--project">
+        <div>
+            <img 
+                class = "hero"
+                src ="{{ url_for('static', filename=project['hero']) }}"
+                alt = "Missing image..."
+            />
 
-        <article class="project">
-            <article class="project__content">
-                <h2 class = "project__heading">{{project['name']}}</h2>
+            <article class="project">
+                <article class="project__content">
+                    <h2 class = "project__heading">{{project['name']}}</h2>
 
-                <p>
-                    Are you tired of drawing lots? Here's a better and funnier way to 
-                    determine who's going to be the luck winner!                    
-                </p>
-                <p>
-                    I made this random-based running game using Unity.
-                    Participants get to choose their characters and rewards.
-                </p>
-                <p>
-                    And then, all you need to do is ...
-                    just praying for your victory lol.
-                </p>
-            </article>
-
-            <section>
-                <article class="project__meta--group">
-                    <h3 class="project__heading project__heading--meta">Technologies used</h3>
-
-                    <ul class="technology-list">
-                        <li class="technology-list__item">C#</li>
-                        <li class="technology-list__item">Unity</li>
-                    </ul>
+                    <p>
+                        Are you tired of drawing lots? Here's a better and funnier way to 
+                        determine who's going to be the luck winner!                    
+                    </p>
+                    <p>
+                        I made this random-based running game using Unity.
+                        Participants get to choose their characters and rewards.
+                    </p>
+                    <p>
+                        And then, all you need to do is ...
+                        just praying for your victory lol.
+                    </p>
                 </article>
 
-                <a class="cta" href="{{project['prod']}}">
-                    <img class="cta__icon" src="{{ url_for('static', filename='img/pointer.svg')}}">
-                    View in production
-                </a>
-            </section>
-        </article>
-    </div>
+                <section>
+                    <article class="project__meta--group">
+                        <h3 class="project__heading project__heading--meta">Technologies used</h3>
 
-</main>
+                        <ul class="technology-list">
+                            <li class="technology-list__item">C#</li>
+                            <li class="technology-list__item">Unity</li>
+                        </ul>
+                    </article>
+
+                    <a class="cta" href="{{project['prod']}}" target="_blank">
+                        <img class="cta__icon" src="{{ url_for('static', filename='img/pointer.svg')}}">
+                        View in production
+                    </a>
+                </section>
+            </article>
+        </div>
+
+    </main>
 
 {%endblock%}
