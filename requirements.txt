@@ -2,3 +2,4 @@ flask
 flask-dotenv
 python-dotenv
 gunicorn
+app
